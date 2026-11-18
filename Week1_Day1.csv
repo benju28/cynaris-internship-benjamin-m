@@ -1,0 +1,10 @@
+rep_id,rep_name,region,product_category,city,monthly_sales,commission,experience,joining_date,supervisor_id
+2,"Riya Kapoor",North,Furniture,Delhi,62000.00,3500.00,2,2023-04-10,202
+5,"Varun Das",East,Groceries,Kolkata,55000.00,2800.00,1,2024-02-05,204
+6,"Tanvi Shah",West,Furniture,Pune,72000.00,4000.00,2,2023-07-18,NULL
+8,"Simran Gill",North,Electronics,Jaipur,68000.00,3200.00,2,2023-09-08,202
+9,"Harish Kumar",East,Groceries,Patna,48000.00,2500.00,1,2024-06-14,204
+12,"Sanya Bose",East,Clothing,Bhubaneswar,59000.00,3000.00,2,2023-08-25,204
+16,"Nisha George",South,Electronics,Mysore,67000.00,3400.00,2,2023-04-03,NULL
+17,"Kabir Anand",East,Groceries,Ranchi,51000.00,2700.00,1,2024-05-16,204
+20,"Leena Paul",West,Furniture,Nagpur,64000.00,3100.00,2,2023-03-19,NULL
