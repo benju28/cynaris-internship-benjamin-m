@@ -1,0 +1,36 @@
+dataset: titanic_passengers
+version: 1.0.0
+description: Cleaned Titanic passenger data used by the BI dashboard
+owner:
+  producer: Benjamin
+  contact: add-your-email-here
+consumer:
+  name: BI dashboard
+  use: survival and fare analysis by class, sex, age band and port
+delivery:
+  file: cleaned_dataset.csv
+  format: csv
+  refresh: on change
+schema:
+  - {name: PassengerId, type: integer, required: true, unique: true, pii: none}
+  - {name: Survived, type: integer, required: true, allowed: [0, 1], pii: none}
+  - {name: Pclass, type: integer, required: true, allowed: [1, 2, 3], pii: none}
+  - {name: Name, type: string, required: true, pii: direct_identifier, handling: tokenise}
+  - {name: Sex, type: string, required: true, allowed: [Male, Female], pii: quasi_identifier, handling: keep_restricted}
+  - {name: Age, type: float, required: true, min: 0, max: 100, pii: quasi_identifier, handling: generalise_to_age_band}
+  - {name: SibSp, type: integer, required: true, min: 0, pii: none}
+  - {name: Parch, type: integer, required: true, min: 0, pii: none}
+  - {name: Ticket, type: string, required: true, pii: indirect_identifier, handling: tokenise}
+  - {name: Fare, type: float, required: true, min: 0, pii: none}
+  - {name: Cabin, type: string, required: true, pii: quasi_identifier, handling: generalise_to_deck}
+  - {name: Embarked, type: string, required: true, allowed: [Southampton, Cherbourg, Queenstown], pii: none}
+quality:
+  row_count: {min: 800, max: 1000}
+  completeness_min_pct: 99
+  duplicate_passenger_id: 0
+  freshness: not enforced (static historical dataset; add a loaded_at column if it is refreshed regularly)
+  validated_with: great_expectations suite titanic_suite (8 expectations)
+change_policy:
+  breaking_changes: renaming or removing a column, changing a type, or changing allowed values
+  notice_days: 14
+  version_rule: breaking change raises the major version
